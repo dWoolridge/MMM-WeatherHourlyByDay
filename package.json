@@ -1,0 +1,26 @@
+{
+  "name": "Magic-Mirror-Module-WeatherHourlyByDay",
+  "version": "1.0",
+  "description": "Weather module for MagicMirror² - Hourly forecast for multiple days",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dWoolridge/MMM-WeatherHourlyByDay"
+  },
+  "keywords": [
+    "magic mirror",
+    "smart mirror",
+    "module",
+    "weather",
+    "hourly",
+    "by day"
+  ],
+  "author": "Doug Woolridge",
+  "contributors": "git+https://github.com/dWoolridge/MMM-WeatherHourlyByDay/graphs/contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "git+https://github.com/dWoolridge/MMM-WeatherHourlyByDay/issues"
+  },
+  "homepage": "git+https://github.com/dWoolridge/MMM-WeatherHourlyByDay#readme",
+  "dependencies": {
+  }
+}
