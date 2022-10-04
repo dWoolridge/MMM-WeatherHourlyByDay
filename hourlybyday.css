@@ -1,0 +1,27 @@
+.MMM-WeatherHourlyByDay * {
+}
+
+.MMM-WeatherHourlyByDay table {
+  border: 1px solid #808080; 
+}
+
+.MMM-WeatherHourlyByDay th {
+  text-align: center;
+  font-size: 90%;
+  border-bottom: 1px solid #808080;
+}
+
+.MMM-WeatherHourlyByDay th:nth-child(1) {
+  border-right: 1px solid #808080;
+}
+
+.MMM-WeatherHourlyByDay td {
+  text-align: center;
+  font-size: 85%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.MMM-WeatherHourlyByDay td:nth-child(1) {
+  border-right: 1px solid #808080;
+}

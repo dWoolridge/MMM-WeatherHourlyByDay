@@ -1,0 +1,47 @@
+{% if hourly %}
+<div class="MMM-WeatherHourlyByDay container-fluid">
+    <table class="{{ config.tableClass }}">
+        <tr class="weather align-center{% if config.colored %} colored{% endif %}">
+{% for inRow in config.dayLabels %}
+            <th class="weather">{{ inRow }}</th>
+{% endfor %}
+{% for hour in hourly %}
+        <tr {% if config.colored %}class="colored"{% endif %}>
+            <td class="day timeColumn">{{ hour.date | formatTime }}</td>
+{% set i = 0 %}
+{% for inCol in hour.temperatureArray %}
+            <td class="align-center bright"> 
+{% if hour.temperatureArray[i] === "---" %}
+---
+{% else %}
+{% if config.showWeatherIcon %}
+<span class="wi weathericon wi-{{ hour.weatherTypeArray[i] }}"></span>
+{% endif %}
+{% if config.showTemperature %}
+{{ hour.temperatureArray[i] | roundValue | unit("temperature") }}
+{% endif %}
+{% if config.showWindDirection %}
+{{ hour.windDirectionArray[i] }}
+{% if config.showWindSpeed %}
+@
+{% endif %}
+{% endif %}
+{% if config.showWindSpeed %}
+{{ hour.windSpeedArray[i] }}
+{% endif %}
+{% endif %}
+</td>
+{% set i = i + 1 %}
+{% endfor %}
+        </tr>
+{% endfor %}
+    </table>
+</div>
+{% else %}
+    <div class="dimmed light small">
+        {{ "LOADING" | translate }}
+    </div>
+{% endif %}
+
+<!-- Uncomment the line below to see the contents of the `hourly` object. -->
+<!-- <div style="word-wrap:break-word" class="xsmall dimmed">{{hourly | dump}}</div> -->
