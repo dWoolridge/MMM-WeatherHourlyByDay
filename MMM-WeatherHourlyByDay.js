@@ -119,6 +119,15 @@ Module.register("MMM-WeatherHourlyByDay", {
                 this.config.hourlyFilteredArray = [];
                 this.config.locationName = payload.locationName;
                 payloadLastEntry = payload.hourlyArray.length - 1;
+  
+                if ( this.config.dailyStartHour > this.config.dailyEndHour ) {
+                        bridgeMidnight = true; 
+                        this.config.dailyEndHour = this.config.dailyEndHour + 24;
+                } else {
+                        bridgeMidnight = false;
+                }
+//Log.info("bridgeMidnight=" + bridgeMidnight );
+
 //Log.info(".length=" + payload.hourlyArray.length + "::payloadLastEntry=" + payloadLastEntry);
 
                 // Start Date
@@ -150,7 +159,8 @@ Module.register("MMM-WeatherHourlyByDay", {
                 for ( let dayNum = 0; dayNum < this.config.daysToShow; dayNum++ ) {
                         tDate = new Date();
                         tDate.setHours(0,0,0,0);
-                        for ( let hourNum = this.config.dailyStartHour; hourNum <= this.config.dailyEndHour; hourNum++ ) {
+                        hourNum = this.config.dailyStartHour; 
+                        for ( let i = this.config.dailyStartHour; i <= this.config.dailyEndHour; i++ ) {
                                 hr = hourNum + hourOffset + (24 * dayNum); 
                                 if ( hr >= 0 ) {
                                         if ( hr >= payloadLastEntry ) {
@@ -171,17 +181,24 @@ Module.register("MMM-WeatherHourlyByDay", {
                                         }
                                         break; 
                                 }
+                                if ( ++hourNum > 23 ) { hourNum = 0 };
                         }
                         tDate.setDate(tDate.getDate() + 1 );
                 }
 
-                for ( let hourNum = this.config.dailyStartHour; hourNum <= this.config.dailyEndHour; hourNum++ ) {
+                hourNum = this.config.dailyStartHour; 
+                for ( let i = this.config.dailyStartHour; i <= this.config.dailyEndHour; i++ ) {
                         let tempHour = new WeatherObjectHourlyByDay(this.config.units, this.config.tempUnits, this.config.windUnits, this.config.useKmh);
                         var pDate = new Date( cDate.getFullYear(), cDate.getMonth(), cDate.getDate(), hourNum, 0, 0, 0 );
                         tempHour.date = pDate;
 
                         for ( let dayNum = 0; dayNum < this.config.daysToShow; dayNum++ ) {
-                                hr = hourNum + hourOffset + (24 * dayNum); 
+                                if ( bridgeMidnight && hourNum < this.config.dailyStartHour ) {
+                                        hr = hourNum + hourOffset + (24 * (dayNum + 1)); 
+                                } else {
+                                        hr = hourNum + hourOffset + (24 * dayNum); 
+                                }
+
 //Log.info( "dayNum=" + dayNum + "::hourNum=" + hourNum + "::hr=" + hr );
                                 if ( hr < 0 || hr >= payloadLastEntry ) {
                                         tempHour.weatherTypeArray.push("---");
@@ -202,6 +219,7 @@ Module.register("MMM-WeatherHourlyByDay", {
                         }
                         cDate = new Date(pDate.getDate() + 3600000);
                         this.config.hourlyFilteredArray.push(tempHour);
+                        if ( ++hourNum > 23 ) { hourNum = 0 };
                 } 
         },
 
