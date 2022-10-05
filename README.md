@@ -23,17 +23,19 @@ npm install
       hiddenOnStartup: false,
       header: "Forecast by Day",
       config: {
-        roundTemp: true,               // Round temperature to integer
-        showLocationInHeader: true,    // Show the WeatherObject.location text with the header
-        dailyStartHour: 9,             // Hour of the day to start showing the weather forecast (0-23)
-        dailyEndHour:   17,            // Hour of the day to stop showing the weather forecase (0-23)
-        daysToShow:     3,             // Number days to show in the table (each day is a column)
+        roundTemp: true,                   // Round temperature to integer
+        appendLocationNameToHeader: true,  // Show the WeatherObject.location text with the header
+        dailyStartHour: 9,                 // Hour of the day to start showing the weather forecast (0-23)
+        dailyEndHour:   17,                // Hour of the day to stop showing the weather forecase (0-23)
+        daysToShow:     3,                 // Number days to show in the table (each day is a column)
 
-        showWeatherIcon: true,         // Include the forecast weather Icon for each time
+        showWeatherIcon: true,             // Include the forecast weather Icon for each time
         showTemperature: true,
         showWindSpeed:  true,
         showWindDirection: true,
       }
+    },
+
 ```
 ## Collaborate
 Pull requests are welcome.
