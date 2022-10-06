@@ -28,6 +28,7 @@ npm install
         dailyStartHour: 9,                 // Hour of the day to start showing the weather forecast (0-23)
         dailyEndHour:   17,                // Hour of the day to stop showing the weather forecase (0-23)
         daysToShow:     3,                 // Number days to show in the table (each day is a column)
+        degreeLabel: false,                // Show the degree label (F, C, K) with the temperature
 
         showWeatherIcon: true,             // Include the forecast weather Icon for each time
         showTemperature: true,
@@ -35,7 +36,6 @@ npm install
         showWindDirection: true,
       }
     },
-
 ```
 ## Collaborate
 Pull requests are welcome.
