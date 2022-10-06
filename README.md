@@ -44,4 +44,3 @@ Pull requests are welcome.
 rejas for his help in how to implement this weather module.
 
 ## TO DO
-Fix Degree Symbol
