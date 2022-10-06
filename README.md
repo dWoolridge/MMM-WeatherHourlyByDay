@@ -1,11 +1,11 @@
 # MMM-WeatherHourlyByDay
-## This module for MagicMirror² displays an Hourly Forecast table for multiple days.  Allows you to specify what hours of the day to include and which forecast components will be displayed (icon, temperature, windspeed, wind direction).
+## This module for MagicMirror² displays an hourly forecast table for multiple days.  Allows you to specify what hours of the day to include and which forecast components will be displayed (icon, temperature, windspeed, wind direction).
 
 ![Screen shot](images/WeatherHourlyByDay.png)
 
 ## Requires:
 - A MagicMirror weather module that provides hourly forecast data.
-- That module must broadcast a "WEATHER_UPDATED" notification with a payload of type WeatherObject, containing the hourly weather data.
+- That module must broadcast a "WEATHER_UPDATED" notification with a payload of type WeatherObject, containing the hourly weather data.  All default "weather" modules with type: "hourly" should do this.
 
 
 ## Manual install
